@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compare - Original vs Generated</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .compare-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .compare-slider {
+      position: relative;
+      overflow: hidden;
+    }
+    .compare-slider img {
+      width: 100%;
+      display: block;
+    }
+    .overlay-mode .generated {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0.5;
+    }
+    .diff-highlight {
+      background: rgba(255, 0, 0, 0.1);
+      border: 2px solid red;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-white p-8">
+  <h1 class="text-3xl font-bold mb-2 text-center">Image to Code - Comparison</h1>
+  <p class="text-gray-400 text-center mb-8">Original (Figma) vs Generated (Tailwind)</p>
+
+  <!-- Controls -->
+  <div class="flex justify-center gap-4 mb-8">
+    <button onclick="setMode('side')" id="btn-side" class="px-4 py-2 bg-blue-600 rounded-lg">Side by Side</button>
+    <button onclick="setMode('overlay')" id="btn-overlay" class="px-4 py-2 bg-gray-700 rounded-lg">Overlay</button>
+    <button onclick="setMode('toggle')" id="btn-toggle" class="px-4 py-2 bg-gray-700 rounded-lg">Toggle (Space)</button>
+  </div>
+
+  <!-- Side by Side Mode -->
+  <div id="side-mode" class="compare-container max-w-6xl mx-auto">
+    <div class="bg-gray-800 rounded-xl p-4">
+      <h2 class="text-lg font-semibold mb-4 text-center text-green-400">Original (Figma)</h2>
+      <img src="original.png" alt="Original" class="rounded-lg border border-gray-700">
+    </div>
+    <div class="bg-gray-800 rounded-xl p-4">
+      <h2 class="text-lg font-semibold mb-4 text-center text-blue-400">Generated (Tailwind)</h2>
+      <img src="generated.png" alt="Generated" class="rounded-lg border border-gray-700">
+    </div>
+  </div>
+
+  <!-- Overlay Mode -->
+  <div id="overlay-mode" class="hidden max-w-3xl mx-auto">
+    <div class="bg-gray-800 rounded-xl p-4">
+      <h2 class="text-lg font-semibold mb-4 text-center">Overlay (50% opacity)</h2>
+      <div class="compare-slider overlay-mode relative">
+        <img src="original.png" alt="Original" class="original rounded-lg">
+        <img src="generated.png" alt="Generated" class="generated rounded-lg">
+      </div>
+      <div class="mt-4 flex items-center gap-4 justify-center">
+        <label class="text-sm">Opacity:</label>
+        <input type="range" id="opacity-slider" min="0" max="100" value="50" class="w-48" onchange="updateOpacity(this.value)">
+        <span id="opacity-value">50%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toggle Mode -->
+  <div id="toggle-mode" class="hidden max-w-3xl mx-auto">
+    <div class="bg-gray-800 rounded-xl p-4">
+      <h2 class="text-lg font-semibold mb-4 text-center">
+        Press <kbd class="px-2 py-1 bg-gray-700 rounded">Space</kbd> to toggle
+      </h2>
+      <div class="relative">
+        <img src="original.png" alt="Original" id="toggle-img" class="rounded-lg border border-gray-700">
+        <div id="toggle-label" class="absolute top-4 right-4 px-3 py-1 bg-green-600 rounded-full text-sm font-medium">
+          Original
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Analysis -->
+  <div class="max-w-4xl mx-auto mt-8 bg-gray-800 rounded-xl p-6">
+    <h2 class="text-xl font-bold mb-4">Analysis</h2>
+    <table class="w-full text-left">
+      <thead>
+        <tr class="border-b border-gray-700">
+          <th class="py-2">Element</th>
+          <th class="py-2">Original</th>
+          <th class="py-2">Generated</th>
+          <th class="py-2">Match</th>
+        </tr>
+      </thead>
+      <tbody class="text-gray-300">
+        <tr class="border-b border-gray-700">
+          <td class="py-2">มุมเหลือง (corner)</td>
+          <td>~20px</td>
+          <td>16px</td>
+          <td class="text-yellow-400">~80%</td>
+        </tr>
+        <tr class="border-b border-gray-700">
+          <td class="py-2">Border radius</td>
+          <td>8px</td>
+          <td>8px (rounded-lg)</td>
+          <td class="text-green-400">✓ 100%</td>
+        </tr>
+        <tr class="border-b border-gray-700">
+          <td class="py-2">สีแดง Primary</td>
+          <td>#B91C1C</td>
+          <td>red-700 (#B91C1C)</td>
+          <td class="text-green-400">✓ 100%</td>
+        </tr>
+        <tr class="border-b border-gray-700">
+          <td class="py-2">สีเหลือง Secondary</td>
+          <td>#FACC15</td>
+          <td>yellow-400 (#FACC15)</td>
+          <td class="text-green-400">✓ 100%</td>
+        </tr>
+        <tr class="border-b border-gray-700">
+          <td class="py-2">Padding</td>
+          <td>24px 12px</td>
+          <td>px-6 py-3</td>
+          <td class="text-green-400">✓ 100%</td>
+        </tr>
+        <tr class="border-b border-gray-700">
+          <td class="py-2">Font weight</td>
+          <td>Medium (500)</td>
+          <td>font-medium</td>
+          <td class="text-green-400">✓ 100%</td>
+        </tr>
+        <tr>
+          <td class="py-2 font-bold">Overall</td>
+          <td></td>
+          <td></td>
+          <td class="text-yellow-400 font-bold">~90%</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="mt-6 p-4 bg-yellow-900/30 border border-yellow-600 rounded-lg">
+      <h3 class="font-semibold text-yellow-400 mb-2">สิ่งที่ต้องปรับ:</h3>
+      <ul class="list-disc list-inside text-gray-300 space-y-1">
+        <li>มุมเหลือง: ขนาดอาจต้องปรับจาก 16px เป็น 20px</li>
+        <li>ตรวจสอบ font-family ให้ตรงกับ design system</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    let currentMode = 'side';
+    let showingOriginal = true;
+
+    function setMode(mode) {
+      currentMode = mode;
+
+      // Hide all
+      document.getElementById('side-mode').classList.add('hidden');
+      document.getElementById('overlay-mode').classList.add('hidden');
+      document.getElementById('toggle-mode').classList.add('hidden');
+
+      // Reset buttons
+      document.getElementById('btn-side').classList.remove('bg-blue-600');
+      document.getElementById('btn-side').classList.add('bg-gray-700');
+      document.getElementById('btn-overlay').classList.remove('bg-blue-600');
+      document.getElementById('btn-overlay').classList.add('bg-gray-700');
+      document.getElementById('btn-toggle').classList.remove('bg-blue-600');
+      document.getElementById('btn-toggle').classList.add('bg-gray-700');
+
+      // Show selected
+      document.getElementById(mode + '-mode').classList.remove('hidden');
+      document.getElementById('btn-' + mode).classList.remove('bg-gray-700');
+      document.getElementById('btn-' + mode).classList.add('bg-blue-600');
+    }
+
+    function updateOpacity(value) {
+      document.querySelector('.overlay-mode .generated').style.opacity = value / 100;
+      document.getElementById('opacity-value').textContent = value + '%';
+    }
+
+    // Toggle with spacebar
+    document.addEventListener('keydown', function(e) {
+      if (e.code === 'Space' && currentMode === 'toggle') {
+        e.preventDefault();
+        showingOriginal = !showingOriginal;
+        const img = document.getElementById('toggle-img');
+        const label = document.getElementById('toggle-label');
+
+        if (showingOriginal) {
+          img.src = 'original.png';
+          label.textContent = 'Original';
+          label.classList.remove('bg-blue-600');
+          label.classList.add('bg-green-600');
+        } else {
+          img.src = 'generated.png';
+          label.textContent = 'Generated';
+          label.classList.remove('bg-green-600');
+          label.classList.add('bg-blue-600');
+        }
+      }
+    });
+  </script>
+</body>
+</html>

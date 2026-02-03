@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inno Hub - Dashboard v2 (Component-First)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+  <!-- ========== NAVBAR ========== -->
+  <header class="bg-white border-b border-gray-100 px-6 py-3">
+    <div class="flex items-center justify-between max-w-7xl mx-auto">
+      <!-- Logo -->
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
+          <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/>
+          </svg>
+        </div>
+        <span class="text-xl font-bold text-gray-900">Inno Hub</span>
+      </div>
+
+      <!-- Right Section -->
+      <div class="flex items-center gap-4">
+        <span class="bg-purple-600 text-white text-sm font-medium px-3 py-1.5 rounded-full">4255 ระบบ</span>
+        <button class="p-2 text-gray-400 hover:bg-gray-100 rounded-full">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"/>
+          </svg>
+        </button>
+        <div class="relative">
+          <img src="https://placehold.co/40x40/d1d5db/6b7280?text=N" alt="Avatar" class="w-10 h-10 rounded-full border-2 border-gray-200">
+          <span class="absolute -top-0.5 -right-0.5 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center font-medium">1</span>
+        </div>
+        <button class="p-2 text-gray-400 hover:bg-gray-100 rounded-lg">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main class="max-w-6xl mx-auto px-6 py-8">
+
+    <!-- ===== GREETING ===== -->
+    <div class="mb-8">
+      <h1 class="text-3xl font-bold text-purple-600 mb-1">สวัสดี, Nuttawut Putta (Not)! 👋</h1>
+      <p class="text-gray-400">ยินดีต้อนรับสู่ระบบติดตามการใช้ AI</p>
+    </div>
+
+    <!-- ===== STATS SECTION (StatCard x4) ===== -->
+    <div class="mb-6">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="text-xl">✨</span>
+        <h2 class="text-lg font-semibold text-gray-900">สถิติของคุณ</h2>
+      </div>
+
+      <div class="grid grid-cols-4 gap-4">
+        <!-- StatCard 1 -->
+        <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+          <p class="text-xs text-gray-400 mb-2">คะแนนสะสม</p>
+          <div class="flex items-end justify-between">
+            <span class="text-4xl font-bold text-gray-900">4255</span>
+            <span class="text-3xl">🏆</span>
+          </div>
+        </div>
+
+        <!-- StatCard 2 -->
+        <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+          <p class="text-xs text-gray-400 mb-2">รายงาน 7 วัน</p>
+          <div class="flex items-end justify-between">
+            <div>
+              <span class="text-4xl font-bold text-gray-900">5</span>
+              <p class="text-xs text-gray-300 mt-1">1-0-0-1-1-1-1</p>
+            </div>
+            <svg class="w-9 h-9 text-purple-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- StatCard 3 -->
+        <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+          <p class="text-xs text-gray-400 mb-2">คะแนนล่าสุด</p>
+          <div class="flex items-end justify-between">
+            <div>
+              <span class="text-4xl font-bold text-gray-900">94</span>
+              <p class="text-xs text-gray-300 mt-1">0-0-0-0-0-0-0</p>
+            </div>
+            <span class="text-3xl">🏆</span>
+          </div>
+        </div>
+
+        <!-- StatCard 4 -->
+        <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+          <p class="text-xs text-gray-400 mb-2">คำแนะนำใหม่</p>
+          <div class="flex items-end justify-between">
+            <span class="text-4xl font-bold text-gray-900">1</span>
+            <div class="w-9 h-9 bg-cyan-50 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-cyan-500" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.87-3.13-7-7-7zM9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== INFO BANNER ===== -->
+    <div class="mb-6">
+      <div class="bg-purple-50 rounded-2xl px-5 py-4 flex items-start gap-3">
+        <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+          <svg class="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+          </svg>
+        </div>
+        <p class="text-sm text-gray-600 flex-1 leading-relaxed">
+          ปัญหาที่ต้องการแก้ไข: ปัญหาซับซ้อนมาก ต้องใช้ความคิดสร้างสรรค์ในการแก้ปัญหาการคำนวณภาษีหัก ณ ที่จ่ายที่ซับซ้อนและผิดพลาด Tips & Tricks: Tips เจ๋งมาก แนะนำคนอื่นได้ทันที มีการใช้ Reverse Calculati...
+        </p>
+        <button class="text-gray-400 hover:text-gray-600 flex-shrink-0">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- ===== SYSTEM STATUS ===== -->
+    <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm mb-6">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="text-xl">📊</span>
+        <h2 class="text-lg font-semibold text-gray-900">สถานะระบบวันนี้</h2>
+      </div>
+
+      <div class="flex items-center gap-3 mb-4">
+        <span class="bg-green-100 text-green-700 text-sm font-medium px-3 py-1 rounded-full flex items-center gap-1.5">
+          <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+          วันทำงาน
+        </span>
+      </div>
+
+      <div class="flex items-center gap-3 mb-5 text-sm text-gray-500">
+        <span>⏰</span>
+        <span>ปิดรับรายงานอัตโนมัติ:</span>
+        <span class="font-semibold text-gray-700">21:00 น.</span>
+        <span class="bg-gray-100 text-gray-500 px-3 py-1 rounded-lg text-sm flex items-center gap-1">
+          <span>📅</span> ปิดอยู่
+        </span>
+      </div>
+
+      <div class="mb-3">
+        <p class="text-sm text-gray-500 flex items-center gap-2">
+          <span>🛠</span>
+          <span>เครื่องมือ AI ที่ใช้ได้ (9):</span>
+        </p>
+      </div>
+
+      <!-- AI Tools List -->
+      <div class="space-y-3">
+        <div class="flex items-start gap-3">
+          <span class="bg-gray-100 text-gray-600 text-xs font-medium px-2.5 py-1 rounded-md whitespace-nowrap">Cli AI Agent</span>
+          <span class="text-sm text-gray-500">AI coding assistant สำหรับเขียนโค้ด แก้บัค และสร้าง tests</span>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="bg-gray-100 text-gray-600 text-xs font-medium px-2.5 py-1 rounded-md whitespace-nowrap">Gemini Pro</span>
+          <span class="text-sm text-gray-500">Google AI สำหรับวิเคราะห์เอกสาร สรุปข้อมูล และ complex reasoning</span>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="bg-gray-100 text-gray-600 text-xs font-medium px-2.5 py-1 rounded-md whitespace-nowrap">Google AI Studio</span>
+          <span class="text-sm text-gray-500">เครื่องมือเว็บสำหรับการสร้าง (Build), ทดสอบ (Test), และปรับจูน Prompt (Prompt Engineering) ด้วยโมเดล Gemini เพื่อนำไปใช้งานผ่าน API ได้อย่างรวดเร็ว</span>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="bg-gray-100 text-gray-600 text-xs font-medium px-2.5 py-1 rounded-md whitespace-nowrap">Google Stitch</span>
+          <span class="text-sm text-gray-500">เครื่องมือออกแบบอย่างรวดเร็วและเว็บไซต์ด้วยปัญญาประดิษฐ์ (AI) ที่ช่วยให้ผู้ใช้สร้างหน้าจอ (UI) ของแอปได้ง่ายขึ้น โดยการใช้ข้อความบรรยายหรือรูปภาพเพื่อสร้างโค้ดพร้อมใช้งานได้ทันที...</span>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="bg-gray-100 text-gray-600 text-xs font-medium px-2.5 py-1 rounded-md whitespace-nowrap">JIRA AI</span>
+          <span class="text-sm text-gray-500">JIRA AI คือการช่วยให้ทีมทำงานได้เร็วขึ้น ฉลาดขึ้น และมีประสิทธิภาพมากขึ้น โดยการทำงานซ้ำๆ โดยอัตโนมัติ, สรุปข้อมูลที่ซับซ้อน, และให้ข้อมูลเชิงลึกที่นำไปปฏิบัติได้</span>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="bg-gray-100 text-gray-600 text-xs font-medium px-2.5 py-1 rounded-md whitespace-nowrap">jules google</span>
+          <span class="text-sm text-gray-500">Jules Coding Agent คือผู้ช่วยเขียนโค้ดตัว AI ที่เปิดตัวผ่าน Google Labs ซึ่งแตกต่างจากแชทบ็อทตัวทั่วไปตรงที่คุณไม่จำเป็นต้องสนทนาแบบต่อเนื่อง...</span>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="bg-gray-100 text-gray-600 text-xs font-medium px-2.5 py-1 rounded-md whitespace-nowrap">Lovable</span>
+          <span class="text-sm text-gray-500">AI-powered web app builder สำหรับสร้าง UI/UX และ full-stack apps</span>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="bg-gray-100 text-gray-600 text-xs font-medium px-2.5 py-1 rounded-md whitespace-nowrap">Mermaid Chart</span>
+          <span class="text-sm text-gray-500">เครื่องมือที่ช่วยให้เราใช้ "ข้อความ" (text) หรือไวยากรณ์ที่คล้ายกับ Markdown เพื่อสร้างและแสดงผลเป็น "แผนภูมิ" (diagrams) และ "ชาร์ต" (charts) ต่างๆ</span>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="bg-gray-100 text-gray-600 text-xs font-medium px-2.5 py-1 rounded-md whitespace-nowrap">NotebookLM Pro</span>
+          <span class="text-sm text-gray-500">AI note-taking และ knowledge management tool</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== QUICK MENU (QuickMenuCard x4) ===== -->
+    <div class="mb-6">
+      <h2 class="text-lg font-semibold text-gray-900 mb-4">เมนูด่วน</h2>
+
+      <div class="grid grid-cols-4 gap-4">
+        <!-- QuickMenuCard 1 -->
+        <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+          <div class="flex items-start justify-between mb-2">
+            <h3 class="font-semibold text-gray-900">ส่งรายงาน AI</h3>
+            <svg class="w-7 h-7 text-purple-400" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2L9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2z"/>
+            </svg>
+          </div>
+          <p class="text-sm text-gray-400 mb-4">บันทึกการใช้ AI วันนี้</p>
+          <button class="bg-green-500 text-white text-sm font-medium px-4 py-1.5 rounded-full">5 รายงาน</button>
+        </div>
+
+        <!-- QuickMenuCard 2 -->
+        <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+          <div class="flex items-start justify-between mb-2">
+            <h3 class="font-semibold text-gray-900">Leaderboard</h3>
+            <span class="text-2xl">🏆</span>
+          </div>
+          <p class="text-sm text-gray-400 mb-4">ดูอันดับและเปรียบเทียบ</p>
+          <button class="bg-yellow-400 text-gray-900 text-sm font-medium px-4 py-1.5 rounded-full">คะแนนล่าสุด: 94</button>
+        </div>
+
+        <!-- QuickMenuCard 3 -->
+        <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+          <div class="flex items-start justify-between mb-2">
+            <h3 class="font-semibold text-gray-900">Feedback ใหม่</h3>
+            <svg class="w-7 h-7 text-gray-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z"/>
+            </svg>
+          </div>
+          <p class="text-sm text-gray-400 mb-4">ข้อความจาก Admin</p>
+          <p class="text-sm text-gray-300">ไม่มีข้อความใหม่</p>
+        </div>
+
+        <!-- QuickMenuCard 4 -->
+        <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+          <div class="flex items-start justify-between mb-2">
+            <h3 class="font-semibold text-gray-900">โปรไฟล์</h3>
+            <svg class="w-7 h-7 text-green-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941"/>
+            </svg>
+          </div>
+          <p class="text-sm text-gray-400 mb-4">จัดการข้อมูลและดูสถิติ</p>
+          <button class="bg-green-500 text-white text-sm font-medium px-4 py-1.5 rounded-full">Developer</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+</body>
+</html>

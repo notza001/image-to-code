@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image to Code - Preview</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .example-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+    .label {
+      text-align: center;
+      font-size: 0.875rem;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 p-8">
+  <h1 class="text-3xl font-bold text-center mb-8">Image to Code - Results</h1>
+
+  <!-- Example 1: Profile Card -->
+  <section class="mb-12 bg-white rounded-xl shadow-lg p-6">
+    <h2 class="text-xl font-semibold mb-4 text-gray-800">Example 1: Profile Card</h2>
+    <div class="example-container">
+      <div>
+        <p class="label">Original</p>
+        <img src="01-profile-card/original.png" alt="Original" class="border rounded-lg mx-auto">
+      </div>
+      <div>
+        <p class="label">Generated</p>
+        <div class="border rounded-lg p-4 bg-white">
+          <!-- ProfileCard Component -->
+          <div class="flex items-center gap-4 p-4 bg-white">
+            <img
+              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face"
+              alt="Profile photo of Brianne Henderlong, VP of Brand Experience"
+              class="w-16 h-16 rounded-full object-cover"
+            />
+            <div class="flex flex-col">
+              <h3 class="text-lg font-semibold text-gray-800">
+                Brianne Henderlong
+              </h3>
+              <p class="text-sm text-gray-500 tracking-wide">
+                VP of Brand Experience
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="text-center mt-4 text-green-600 font-medium">Accuracy: ~90%</p>
+  </section>
+
+  <!-- Example 2: Google Button -->
+  <section class="mb-12 bg-white rounded-xl shadow-lg p-6">
+    <h2 class="text-xl font-semibold mb-4 text-gray-800">Example 2: Google Search Button</h2>
+    <div class="example-container">
+      <div>
+        <p class="label">Original</p>
+        <img src="02-google-button/original.png" alt="Original" class="border rounded-lg mx-auto">
+      </div>
+      <div>
+        <p class="label">Generated</p>
+        <div class="border rounded-lg p-4 bg-white flex justify-center">
+          <!-- GoogleButton Component -->
+          <button class="px-6 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-medium rounded border border-gray-100 hover:border-gray-200 transition-colors">
+            Google Search
+          </button>
+        </div>
+      </div>
+    </div>
+    <p class="text-center mt-4 text-green-600 font-medium">Accuracy: ~93%</p>
+  </section>
+
+  <footer class="text-center text-gray-500 text-sm mt-8">
+    Generated with Claude Vision + Tailwind CSS
+  </footer>
+</body>
+</html>
